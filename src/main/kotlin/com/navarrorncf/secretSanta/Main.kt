@@ -1,9 +1,12 @@
 package com.navarrorncf.secretSanta
 
-import com.navarrorncf.secretSanta.system.SystemProcessHandler
-import com.navarrorncf.secretSanta.system.UserInterfaceHandler
+import com.navarrorncf.secretSanta.system.*
+import kotlin.random.Random
 
 fun main() {
-    val input = getNames(UserInterfaceHandler(), SystemProcessHandler())
-    println(input.joinToString("\n"))
+    val names = getNames(UserInterfaceHandler(), SystemProcessHandler())
+
+    val picks = getShuffledList(names.size, Random.nextDouble())
+
+    println(assignPicks(names, picks))
 }
